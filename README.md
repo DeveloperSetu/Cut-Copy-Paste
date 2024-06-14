@@ -1,0 +1,83 @@
+# CUT , COPY , PASTE  Using  JavaScript
+
+# TECHNOLOGY 
+  HTML
+  CSS
+  JavaScript
+
+# CODE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+
+<div class="container">
+    <h1 class="text-center">Cut Coppy Paste</h1><hr><br><br>
+
+    <input type="text" name="" id="copyInput" class="p-2" value="Some Text , you can copy this" > <label for=""> 
+        <button type="button " class="btn btn-primary" id="copyBtn">Copy</button>
+    </label><br>
+
+    <input type="text" name="" id="cutInput" class="p-2" value="Some Text , you can cut this" > <label for=""> 
+        <button type="button " class="btn btn-primary" id="cutBtn">Cut</button>
+    </label><br>
+
+    <input type="text" name="" id="pasteInput" class="p-2" value="" > <label for=""> 
+        <button type="button " class="btn btn-primary" id="pasteBtn">Paste</button>
+    </label><br>
+
+</div>
+
+
+    <script>
+
+        copyInput = document.querySelector("#copyInput");        
+        copyBtn = document.querySelector("#copyBtn");
+        cutInput = document.querySelector("#cutInput");
+        cutBtn = document.querySelector("#cutBtn");
+        pasteInput = document.querySelector("#pasteInput");
+        pasteBtn = document.querySelector("#pasteBtn");
+
+        // Copy.................//
+        copyBtn.addEventListener('click' , ()=>{
+
+            navigator.clipboard.writeText(copyInput.value)
+            alert("copy text success");
+
+        });
+        
+        // Cut ...................//
+
+        cutBtn.addEventListener('click' , ()=>{
+
+            
+            navigator.clipboard.writeText(cutInput.value)
+            alert("cut text success");
+
+            cutInput.value = "";
+           
+        });
+
+
+
+        // Paste.....................//
+
+        pasteBtn.addEventListener('click' , ()=>{
+ 
+            navigator.clipboard.readText().then(function(text){
+                pasteInput.value = text;
+            })
+            
+        });
+
+    </script>
+</body>
+</html>
